@@ -66,7 +66,15 @@ public class EnhancedCanvas : Canvas {
         
     }
     
-    func interpret(character : Character, forThis system : VisualizedLindenmayerSystem) {
+    func interpret(character : Character, forThis system : VisualizedLindenmayerSystem)
+    {
+        if let characterAsInt = Int(String(character))
+        {
+            let currentColour = system.color[characterAsInt]!
+            self.lineColor = Color(hue: currentColour.hue, saturation: currentColour.saturation, brightness: currentColour.brightness, alpha: 100)
+            return
+        }
+        
         
         // Interpret each character of the word
         switch character {

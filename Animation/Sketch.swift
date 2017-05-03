@@ -35,6 +35,8 @@ class Sketch : NSObject {
         // Create a new canvas
         canvas = EnhancedCanvas(width: 500, height: 500)
         
+        let blue = Colour(hue: 240, saturation: 80, brightness: 90)
+        
         // Set up a Koch snowflake
         kochSnowflake = LindenmayerSystem(angle: 60,
                                           axiom: "F++F++F",
@@ -47,7 +49,8 @@ class Sketch : NSObject {
                                                          reduction: 3,
                                                          x: 120,
                                                          y: 175,
-                                                         direction: 0)
+                                                         direction: 0,
+                                                         color: [1 : blue])
         
         // Visualize this as a small snowflake
         mediumKochSnowflake = VisualizedLindenmayerSystem(with: kochSnowflake,
@@ -55,7 +58,8 @@ class Sketch : NSObject {
                                                           reduction: 3,
                                                           x: 250,
                                                           y: 300,
-                                                          direction: 0)
+                                                          direction: 0,
+                                                          color: [1 : blue])
         
         
         // Set up a Koch Island
@@ -70,7 +74,8 @@ class Sketch : NSObject {
                                                        reduction: 4,
                                                        x: 100,
                                                        y: 400,
-                                                       direction: 10)
+                                                       direction: 10,
+                                                       color: [1 : blue])
         
         // Set up a Koch Swirl
         kochSwirl = LindenmayerSystem(angle: 90,
@@ -84,11 +89,12 @@ class Sketch : NSObject {
                                                       reduction: 3,
                                                       x: 250,
                                                       y: 400,
-                                                      direction: 0)
+                                                      direction: 0,
+                                                      color: [1 : blue])
 
         // Set up another Koch construction
         kochConstruction = LindenmayerSystem(angle: 90,
-                                             axiom: "F-F-F-F",
+                                             axiom: "1F-F-F-F",
                                              rule: "FF-F-F-F-F-F+F",
                                              generations: 3)
         
@@ -98,7 +104,8 @@ class Sketch : NSObject {
                                                          reduction: 4,
                                                          x: 250,
                                                          y: 350,
-                                                         direction: 0)
+                                                         direction: 0,
+                                                         color: [1 : blue])
         
         // The frame rate can be adjusted; the default is 60 fps
         canvas.framesPerSecond = 60
