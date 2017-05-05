@@ -75,22 +75,29 @@ public class EnhancedCanvas : Canvas {
             return
         }
         
+        let uppercase = try! NSRegularExpression(pattern:"[A-Z]", options: NSRegularExpression.Options(rawValue: 0))
+        let lowercase = try! NSRegularExpression(pattern:"[a-z]", options: NSRegularExpression.Options(rawValue: 0))
+        let string = String(character)
+        let nsstring = string as NSString?
+        let isUppercase = uppercase.firstMatch(in: string, options: [], range: NSRange(location: 0, length: string.characters.count))
+        let isLowercase = lowercase.firstMatch(in: string, options: [], range: NSRange(location: 0, length: string.characters.count))
         
         // Interpret each character of the word
         switch character {
-        case "F":
-            // Go forward while drawing a line
-            self.drawLine(fromX: 0, fromY: 0, toX: system.currentLength, toY: 0)
-            self.translate(byX: system.currentLength, byY: 0)
-        case "f":
-            // Go forward without drawing a line
-            self.translate(byX: system.currentLength, byY: 0)
         case "+":
             // Turn left
             self.rotate(by: system.angle)
         case "-":
             // Turn right
             self.rotate(by: system.angle * -1)
+        case Character(isUppercase.map { nsstring?.substring(with: $0.range)}!!):
+            // Go forward while drawing a line
+            self.drawLine(fromX: 0, fromY: 0, toX: system.currentLength, toY: 0)
+            self.translate(byX: system.currentLength, byY: 0)
+        case Character(isLowercase.map { nsstring?.substring(with: $0.range)}!!):
+            print(isLowercase!)
+            // Go forward without drawing a line
+            self.translate(byX: system.currentLength, byY: 0)
         default:
             // Do nothing for any another character in the word
             break
