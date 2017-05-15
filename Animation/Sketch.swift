@@ -38,8 +38,8 @@ class Sketch : NSObject {
         
         // Visualize this as a small snowflake
         mediumKochSnowflake = VisualizedLindenmayerSystem(with: kochSnowflake,
-                                                          length: 270,
-                                                          reduction: 3,
+                                                          length: 300,
+                                                          reduction: 1.5,
                                                           x: 250,
                                                           y: 300,
                                                           direction: 0,

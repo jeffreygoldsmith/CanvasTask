@@ -11,6 +11,7 @@ import Foundation
 func randomSuccessor(successors: [String]) -> String
 {
     var ruleProbabilities : [Int] = [] // Array of all successor probabilities
+    var rules : [String] = []
     var addativeArray : [Int] = [] //
     var max : Int = 0
     
@@ -22,11 +23,11 @@ func randomSuccessor(successors: [String]) -> String
         {
             ruleProbabilities.append(probabilityOfRule)
         }
+        rules.append(components[1])
     }
     
     for i in ruleProbabilities
     {
-        print(i)
         max += i
         addativeArray.append(max)
     }
@@ -45,5 +46,7 @@ func randomSuccessor(successors: [String]) -> String
         c += 1
     }
     
-    return successors[c]
+    print(rules)
+    print(rules[c])
+    return rules[c]
 }

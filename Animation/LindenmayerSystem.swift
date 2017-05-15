@@ -94,17 +94,18 @@ public class LindenmayerSystem {
                     
                     if (character != "+" && character != "-" && Int(String(character)) == nil)
                     {
-                        if rules[character].count > 1
+                        if let successors = rules[character]
                         {
-                            let characterRules = rules[character]
-                            let ruleToAppend = randomSuccessor(successors: characterRules!)
-                            newWord.append(ruleToAppend)
+                            if successors.count > 1
+                            {
+                                let ruleToAppend = randomSuccessor(successors: successors)
+                                newWord.append(ruleToAppend)
+                            } else {
+                                newWord.append(successors[0])
+                            }
                         }
                     } else {
-                        
-                        // just copy what's in the existing word to the new word
-                        newWord.append(character)
-                        
+                        newWord.append(character) // just copy what's in the existing word to the new word
                     }
                     
                 }
