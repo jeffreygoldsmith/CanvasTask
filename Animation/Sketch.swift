@@ -28,7 +28,7 @@ class Sketch : NSObject {
         
         let blue = Colour(hue: 240, saturation: 80, brightness: 90)
         
-        let rules = [Character("F") : ["1/F+", "1/F-"]]
+        let rules = [Character("X") : ["F−[[X]+X]+F[+FX]−X"]]
         
         // Set up a Koch snowflake
         kochSnowflake = LindenmayerSystem(angle: 60,
@@ -40,8 +40,8 @@ class Sketch : NSObject {
         mediumKochSnowflake = VisualizedLindenmayerSystem(with: kochSnowflake,
                                                           length: 300,
                                                           reduction: 1.5,
-                                                          x: 250,
-                                                          y: 300,
+                                                          x: 350,
+                                                          y: 250,
                                                           direction: 0,
                                                           color: [1 : blue])
         

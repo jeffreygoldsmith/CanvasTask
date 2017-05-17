@@ -44,7 +44,7 @@ public class EnhancedCanvas : Canvas {
             system.currentLength = Float( Double(system.initialLength) / pow(Double(system.reduction), Double(generation)) )
 
             // Move turtle to starting point
-            self.translate(byX: system.x, byY: system.y) // Move turtle to starting point
+//            self.translate(byX: system.x, byY: system.y) // Move turtle to starting point
         }
         
         // Don't run past end of the word
@@ -68,6 +68,10 @@ public class EnhancedCanvas : Canvas {
     
     func interpret(character : Character, forThis system : VisualizedLindenmayerSystem)
     {
+        
+        let newX = Float(CGFloat(system.x) + cos(CGFloat(M_PI) * system.currentAngle/180) * CGFloat(system.currentLength))
+        let newY = Float(CGFloat(system.y) + sin(CGFloat(M_PI) * system.currentAngle/180) * CGFloat(system.currentLength))
+        
         if let characterAsInt = Int(String(character))
         {
             let currentColour = system.color[characterAsInt]!
@@ -86,18 +90,28 @@ public class EnhancedCanvas : Canvas {
         switch character {
         case "+":
             // Turn left
-            self.rotate(by: system.angle)
+            system.currentAngle += system.angle
         case "-":
             // Turn right
-            self.rotate(by: system.angle * -1)
+            system.currentAngle -= system.angle
+        case "[":
+            system.stateStack.append(VisualizedLindenmayerSystem.systemState(xPos: system.x, yPos: system.y, angle: system.currentAngle))
+        case "]":
+            system.x = system.stateStack[system.stateStack.count - 1].xPos
+            system.y = system.stateStack[system.stateStack.count - 1].yPos
+            system.currentAngle = system.stateStack[system.stateStack.count - 1].angle
+            system.stateStack.removeLast()
         case Character(isUppercase.map { nsstring?.substring(with: $0.range)}!!):
             // Go forward while drawing a line
-            self.drawLine(fromX: 0, fromY: 0, toX: system.currentLength, toY: 0)
-            self.translate(byX: system.currentLength, byY: 0)
+            print(system.x, system.y, newX, newY)
+            self.drawLine(fromX: system.x, fromY: system.y, toX: newX, toY: newY)
+            system.x = newX
+            system.y = newY
         case Character(isLowercase.map { nsstring?.substring(with: $0.range)}!!):
             print(isLowercase!)
             // Go forward without drawing a line
-            self.translate(byX: system.currentLength, byY: 0)
+            system.x = newX
+            system.y = newY
         default:
             // Do nothing for any another character in the word
             break
