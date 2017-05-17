@@ -21,7 +21,7 @@ public class EnhancedCanvas : Canvas {
         
         // Render the word
         self.saveState()
-        self.translate(byX: system.x, byY: system.y) // Move turtle to starting point
+//        self.translate(byX: system.x, byY: system.y) // Move turtle to starting point
         for c in system.word[generation].characters {
             interpret(character: c, forThis: system)
         }
@@ -95,15 +95,17 @@ public class EnhancedCanvas : Canvas {
             // Turn right
             system.currentAngle -= system.angle
         case "[":
+            print(system.x, system.y, system.currentAngle)
             system.stateStack.append(VisualizedLindenmayerSystem.systemState(xPos: system.x, yPos: system.y, angle: system.currentAngle))
         case "]":
             system.x = system.stateStack[system.stateStack.count - 1].xPos
             system.y = system.stateStack[system.stateStack.count - 1].yPos
             system.currentAngle = system.stateStack[system.stateStack.count - 1].angle
+            
+            print(system.x, system.y, system.currentAngle)
             system.stateStack.removeLast()
         case Character(isUppercase.map { nsstring?.substring(with: $0.range)}!!):
             // Go forward while drawing a line
-            print(system.x, system.y, newX, newY)
             self.drawLine(fromX: system.x, fromY: system.y, toX: newX, toY: newY)
             system.x = newX
             system.y = newY
