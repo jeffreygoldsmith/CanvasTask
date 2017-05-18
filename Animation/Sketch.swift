@@ -28,33 +28,32 @@ class Sketch : NSObject {
         
         let blue = Colour(hue: 240, saturation: 80, brightness: 90)
         
-        let rules = [Character("F") : ["F"]]
+        let rules = [Character("X") : ["F-[[X]+X]+F[+FX]-X"], Character("F") : ["FF"]]
         
         // Set up a Koch snowflake
-        kochSnowflake = LindenmayerSystem(angle: 22.5,
-                                          axiom: "F",
+        kochSnowflake = LindenmayerSystem(angle: 25,
+                                          axiom: "X",
                                           rules: rules,
-                                          generations: 1)
+                                          generations: 6)
         
         // Visualize this as a small snowflake
         mediumKochSnowflake = VisualizedLindenmayerSystem(with: kochSnowflake,
-                                                          length: 100,
-                                                          reduction: 2.5,
-                                                          x: 150,
-                                                          y: 150,
+                                                          length: 150,
+                                                          reduction: 2,
+                                                          x: 300,
+                                                          y: 50,
                                                           direction: 90,
                                                           color: [1 : blue])
         
         // The frame rate can be adjusted; the default is 60 fps
-        canvas.framesPerSecond = 120
-        
+        canvas.framesPerSecond = 240
     }
     
     // Runs repeatedly, equivalent to draw() in Processing
     func draw() {
         
         // Render the current system
-        canvas.render(system: mediumKochSnowflake)
+        canvas.renderAnimated(system: mediumKochSnowflake, generation: 6)
         
     }
     

@@ -46,7 +46,5 @@ func randomSuccessor(successors: [String]) -> String
         c += 1
     }
     
-    print(rules)
-    print(rules[c])
     return rules[c]
 }

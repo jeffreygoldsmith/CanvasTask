@@ -43,7 +43,6 @@ public class LindenmayerSystem {
         
         // See if word needs to be re-written
         if n > 0 {
-            
             // Apply the production rule "n" times
             for i in 1...n {
                 
@@ -53,7 +52,7 @@ public class LindenmayerSystem {
                 // Inspect each character of existing word
                 for character in word[i - 1].characters {
                     
-                    if (character != "+" && character != "-" && Int(String(character)) == nil)
+                    if (character != "+" && character != "-" && Int(String(character)) == nil && character != "[" && character != "]")
                     {
                         if let successors = rules[character]
                         {
@@ -67,8 +66,7 @@ public class LindenmayerSystem {
                         }
                     } else {
                         newWord.append(character) // just copy what's in the existing word to the new word
-                    }
-                    
+                    }                    
                 }
                 
                 // Add the re-written word to the system
