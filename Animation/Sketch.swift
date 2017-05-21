@@ -8,68 +8,28 @@
 
 import Foundation
 
-class Sketch : NSObject {
-    
-    // NOTE: Every sketch must contain an object of type Canvas named 'canvas'
-    //       Therefore, the line immediately below must always be present.
+class Sketch : NSObject
+{
     let canvas : EnhancedCanvas
-    
-    // Create the basic L-systems
-    let tree : LindenmayerSystem
-    let triangle : LindenmayerSystem
-    
-    // Create the visualizations of the snowflake
-    let systemOne : VisualizedLindenmayerSystem
-    let systemTwo : VisualizedLindenmayerSystem
+    let parcer = Parcer(path: "/Users/student/Desktop/test.txt")
+    let systems : [VisualizedLindenmayerSystem]
     
     // This runs once, equivalent to setup() in Processing
     override init() {
         
         // Create a new canvas
-        canvas = EnhancedCanvas(width: 500, height: 500)
-        
-        let blue = Colour(hue: 240, saturation: 80, brightness: 90)
-        
-        let rules = [Character("X") : ["F-[[X]+X]+F[+FX]-X"], Character("F") : ["FF"]]
-        let rules2 = [Character("F") : ["F-G+F+G-F"], Character("G") : ["GG"]]
-        
-        // Set up a Koch snowflake
-        tree = LindenmayerSystem(angle: 25,
-                                          axiom: "X",
-                                          rules: rules,
-                                          generations: 6)
-        
-        triangle = LindenmayerSystem(angle: 120,
-                                 axiom: "F-G-G",
-                                 rules: rules2,
-                                 generations: 4)
-        
-        // Visualize this as a small snowflake
-        systemOne = VisualizedLindenmayerSystem(with: tree,
-                                                          length: 150,
-                                                          reduction: 2,
-                                                          x: 150,
-                                                          y: 50,
-                                                          direction: 90,
-                                                          color: [1 : blue])
-        
-        systemTwo = VisualizedLindenmayerSystem(with: triangle,
-                                                length: 150,
-                                                reduction: 2,
-                                                x: 350,
-                                                y: 200,
-                                                direction: 90,
-                                                color: [1 : blue])
+        canvas = EnhancedCanvas(width: 600, height: 600)
+        systems = parcer.parce()
         
         // The frame rate can be adjusted; the default is 60 fps
         canvas.framesPerSecond = 240
     }
     
     // Runs repeatedly, equivalent to draw() in Processing
-    func draw() {
-        
+    func draw()
+    {
         // Render the current system
-        canvas.renderAnimated(systems: [systemOne, systemTwo], generations: [6, 4])
+        canvas.renderAnimated(systems: systems, generations: [5])
         
     }
     

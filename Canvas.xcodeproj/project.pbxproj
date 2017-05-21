@@ -10,6 +10,8 @@
 		0003F4121ECA1F3D0062FF6E /* Stochastic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0003F4111ECA1F3D0062FF6E /* Stochastic.swift */; };
 		0020E5FC1EC240E40033C019 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0020E5FB1EC240E40033C019 /* Rule.swift */; };
 		0023999E1EBA52D300F1760F /* Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0023999D1EBA52D300F1760F /* Colour.swift */; };
+		0026C7B01ED234960056DCE9 /* Parcer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026C7AF1ED234960056DCE9 /* Parcer.swift */; };
+		004871B81ED23BED00B7DCFF /* LineReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004871B71ED23BED00B7DCFF /* LineReader.swift */; };
 		81064A0A1C130A10007ED524 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81064A091C130A10007ED524 /* AppDelegate.swift */; };
 		81064A0C1C130A10007ED524 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81064A0B1C130A10007ED524 /* ViewController.swift */; };
 		81064A0E1C130A10007ED524 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81064A0D1C130A10007ED524 /* Assets.xcassets */; };
@@ -25,6 +27,8 @@
 		0003F4111ECA1F3D0062FF6E /* Stochastic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stochastic.swift; sourceTree = "<group>"; };
 		0020E5FB1EC240E40033C019 /* Rule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
 		0023999D1EBA52D300F1760F /* Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colour.swift; sourceTree = "<group>"; };
+		0026C7AF1ED234960056DCE9 /* Parcer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parcer.swift; sourceTree = "<group>"; };
+		004871B71ED23BED00B7DCFF /* LineReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineReader.swift; sourceTree = "<group>"; };
 		81064A061C130A10007ED524 /* Canvas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Canvas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81064A091C130A10007ED524 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81064A0B1C130A10007ED524 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +96,8 @@
 				0023999D1EBA52D300F1760F /* Colour.swift */,
 				0020E5FB1EC240E40033C019 /* Rule.swift */,
 				0003F4111ECA1F3D0062FF6E /* Stochastic.swift */,
+				0026C7AF1ED234960056DCE9 /* Parcer.swift */,
+				004871B71ED23BED00B7DCFF /* LineReader.swift */,
 			);
 			name = Support;
 			sourceTree = "<group>";
@@ -168,6 +174,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81064A0C1C130A10007ED524 /* ViewController.swift in Sources */,
+				0026C7B01ED234960056DCE9 /* Parcer.swift in Sources */,
 				81F1943D1EABB91100832CA6 /* LindenmayerSystem.swift in Sources */,
 				81EAC5A41D87DF52005DD91D /* Helper.swift in Sources */,
 				0020E5FC1EC240E40033C019 /* Rule.swift in Sources */,
@@ -176,6 +183,7 @@
 				81678C541EBA34D3006FB3B9 /* VisualizedLindenmayerSystem.swift in Sources */,
 				81F1943C1EABB91100832CA6 /* EnhancedCanvas.swift in Sources */,
 				81064A1C1C132DA2007ED524 /* Sketch.swift in Sources */,
+				004871B81ED23BED00B7DCFF /* LineReader.swift in Sources */,
 				81064A0A1C130A10007ED524 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

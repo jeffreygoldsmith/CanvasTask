@@ -21,7 +21,6 @@ public class EnhancedCanvas : Canvas {
         
         // Render the word
         self.saveState()
-//        self.translate(byX: system.x, byY: system.y) // Move turtle to starting point
         for c in system.word[generation].characters {
             interpret(character: c, forThis: system)
         }
@@ -84,6 +83,7 @@ public class EnhancedCanvas : Canvas {
         let isUppercase = uppercase.firstMatch(in: string, options: [], range: NSRange(location: 0, length: string.characters.count))
         let isLowercase = lowercase.firstMatch(in: string, options: [], range: NSRange(location: 0, length: string.characters.count))
         
+        print(character)
         // Interpret each character of the word
         switch character {
         case "+":
