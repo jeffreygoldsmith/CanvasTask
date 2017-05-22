@@ -21,6 +21,7 @@ public class EnhancedCanvas : Canvas {
         
         // Render the word
         self.saveState()
+        self.translate(byX: system.x, byY: system.y) // Move turtle to starting point
         for c in system.word[generation].characters {
             interpret(character: c, forThis: system)
         }
@@ -40,9 +41,9 @@ public class EnhancedCanvas : Canvas {
             
             // Things to do at start of L-system animation...
             if system.animationPosition == 0 {
-                
                 // Change the line length
                 system.currentLength = Float( Double(system.initialLength) / pow(Double(system.reduction), Double(generation)) )
+                system.currentThickness = Float( Double(system.initialThickness) / pow(Double(system.thicknessReduction), Double(generation)) )
             }
             
             // Don't run past end of the word
@@ -101,7 +102,7 @@ public class EnhancedCanvas : Canvas {
             system.stateStack.removeLast()
         case Character(isUppercase.map { nsstring?.substring(with: $0.range)}!!):
             // Go forward while drawing a line
-            self.drawLine(fromX: system.x, fromY: system.y, toX: newX, toY: newY)
+            self.drawLine(fromX: system.x, fromY: system.y, toX: newX, toY: newY, lineWidth: Int(system.currentThickness))
             system.x = newX
             system.y = newY
         case Character(isLowercase.map { nsstring?.substring(with: $0.range)}!!):

@@ -57,8 +57,8 @@ public class Parcer
         var direction : Int = 0
         var length : Float = 0
         var reduction : Float = 0
-        var thickness : Int = 0
-        var thicknessReduction : Int = 0
+        var thickness : Float = 0
+        var thicknessReduction : Float = 0
         var x : Float = 0
         var y : Float = 0
         
@@ -128,10 +128,10 @@ public class Parcer
                 reduction = Float(parcedValue[1])! // Set reduction value
                 break
             case "thickness":
-                thickness = Int(parcedValue[1])! // Set thickness value
+                thickness = Float(parcedValue[1])! // Set thickness value
                 break
             case "thickness_reduction":
-                thicknessReduction = Int(parcedValue[1])! // Set thickness reduction value
+                thicknessReduction = Float(parcedValue[1])! // Set thickness reduction value
                 break
             case "x":
                 x = Float(parcedValue[1])! // Set x value
@@ -145,7 +145,7 @@ public class Parcer
         }
         
         let newSystem = LindenmayerSystem(angle: angle, axiom: axiom, rules: rules, generations: generations)
-        let newVisualizedSystem = VisualizedLindenmayerSystem(with: newSystem, length: length, reduction: reduction, x: x, y: y, direction: direction, color: colors)
+        let newVisualizedSystem = VisualizedLindenmayerSystem(with: newSystem, length: length, reduction: reduction, x: x, y: y, thickness: thickness, thicknessReduction: thicknessReduction, direction: direction, color: colors)
         
         return newVisualizedSystem
     }
