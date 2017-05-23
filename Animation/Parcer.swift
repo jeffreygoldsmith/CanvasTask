@@ -149,4 +149,76 @@ public class Parcer
         
         return newVisualizedSystem
     }
+    
+    
+    func writeSystem(path: String, systems: [VisualizedLindenmayerSystem])
+    {
+        // Open an output file for writing, overwriting any existing data
+        guard let writer = LineWriter(path: path, appending: false) else {
+            print("Cannot open output file")
+            exit(0); // cannot open output file
+        }
+        
+        for system in systems
+        {
+            writer.write(line: "[")
+            writer.write(line: "<")
+            writer.write(line: "author:\(system.author)")
+            writer.write(line: "description:\(system.description)")
+            writer.write(line: "angle:\(system.angle)")
+            writer.write(line: "axiom:\(system.axiom)")
+            
+            writer.write(line: "rules:")
+            writer.write(line: "{")
+            for (character, rule) in system.rules
+            {
+                writer.write(line: "\(character)=\(rule)")
+            }
+            writer.write(line: "}")
+            
+            writer.write(line: "generations:\(system.n)")
+            writer.write(line: ">")
+            
+            
+            if (system.colours.count > 0)
+            {
+                writer.write(line: "colors:")
+                writer.write(line: "{")
+                for (number, colour) in system.colours
+                {
+                    writer.write(line: "\(number)=\(colour.hue),\(colour.saturation),\(colour.brightness)")
+                }
+                writer.write(line: "}")
+            }
+            
+            if (system.direction != nil)
+            {
+                writer.write(line: "direction:\(system.direction)")
+            }
+            
+            writer.write(line: "length:\(system.initialLength)")
+            writer.write(line: "length_reduction:\(system.reduction)")
+            
+            if (system.initialThickness != nil)
+            {
+                writer.write(line: "thickness:\(system.initialThickness)")
+                writer.write(line: "thickness_reduction:\(system.thicknessReduction)")
+            }
+            
+            if (system.x != nil)
+            {
+                writer.write(line: "x:\(system.x)")
+            }
+            
+            if (system.y != nil)
+            {
+                writer.write(line: "y:\(system.y)")
+            }
+            
+            writer.write(line: "]")
+        }
+        
+        // Close the output file
+        writer.close()
+    }
 }

@@ -16,11 +16,13 @@ public class VisualizedLindenmayerSystem : LindenmayerSystem {
         var angle : Degrees
     }
     
+    var author : String = ""
+    var description : String = ""
     var initialLength : Float               // initial line segment length
-    var initialThickness : Float               // initial line segment width
+    var initialThickness : Float            // initial line segment width
     var reduction : Float                   // reduction factor
-    var x : Float                             // initial horizontal position of turtle
-    var y : Float                             // initial vertical position of turtle
+    var x : Float                           // initial horizontal position of turtle
+    var y : Float                           // initial vertical position of turtle
     var direction : Int                     // initial direction turtle faces (degrees)
     var currentLength : Float               // current line segment length
     var currentThickness : Float
@@ -28,7 +30,7 @@ public class VisualizedLindenmayerSystem : LindenmayerSystem {
     var animationPosition = 0               // tracks current character being interpreted when system is animated
     var currentAngle : Degrees
     var stateStack = [systemState]()
-    var color : [Int : Colour]
+    var colours : [Int : Colour]
 
     public init(with providedSystem: LindenmayerSystem,
                 length: Float,
@@ -38,7 +40,7 @@ public class VisualizedLindenmayerSystem : LindenmayerSystem {
                 thickness : Float,
                 thicknessReduction : Float,
                 direction: Int,
-                color: [Int : Colour]) {
+                colours: [Int : Colour]) {
         
         // Initialize stored properties
         self.initialLength = length
@@ -51,7 +53,7 @@ public class VisualizedLindenmayerSystem : LindenmayerSystem {
         self.thicknessReduction = thicknessReduction
         self.currentLength = self.initialLength
         self.currentAngle = Degrees(direction)
-        self.color = color
+        self.colours = colours
         
         super.init(with: providedSystem)
         

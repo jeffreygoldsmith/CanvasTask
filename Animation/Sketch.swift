@@ -29,11 +29,11 @@ class Sketch : NSObject
         let tumbleweedColours = [1 : Colour(hue: 55, saturation: 74, brightness: 75), 2 : Colour(hue: 120, saturation: 70, brightness: 65), 3 : Colour(hue: 19, saturation: 39, brightness: 38)]
         
         tumbleweed = LindenmayerSystem(angle: 22, axiom: "FX", rules: tumbleweedRules, generations: 4)
-        visualizedTumbleweed = VisualizedLindenmayerSystem(with: tumbleweed, length: 25, reduction: 1.5, x: 250, y: 200, thickness: 1, thicknessReduction: 1, direction: 90, color: tumbleweedColours)
+        visualizedTumbleweed = VisualizedLindenmayerSystem(with: tumbleweed, length: 25, reduction: 1.5, x: 250, y: 200, thickness: 1, thicknessReduction: 1, direction: 90, colours: tumbleweedColours)
         
         let fooRules = [Character("X") : ["1XX"], Character("F") : ["F+[2FFFF]"]]
         foo = LindenmayerSystem(angle: 22, axiom: "FX", rules: fooRules, generations: 6)
-        vFoo = VisualizedLindenmayerSystem(with: foo, length: 50, reduction: 1.5, x: 250, y: 200, thickness: 1, thicknessReduction: 1, direction: 180, color: [1 : Colour(hue: 120, saturation: 60, brightness: 46), 2 : Colour(hue: 50, saturation: 9, brightness: 76)])
+        vFoo = VisualizedLindenmayerSystem(with: foo, length: 50, reduction: 1.5, x: 250, y: 200, thickness: 1, thicknessReduction: 1, direction: 180, colours: [1 : Colour(hue: 120, saturation: 60, brightness: 46), 2 : Colour(hue: 50, saturation: 9, brightness: 76)])
         
         // The frame rate can be adjusted; the default is 60 fps
         canvas.framesPerSecond = 350
