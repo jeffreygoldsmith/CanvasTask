@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0003F4121ECA1F3D0062FF6E /* Stochastic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0003F4111ECA1F3D0062FF6E /* Stochastic.swift */; };
+		000EF7A91ED3CA9E00952D90 /* LineWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000EF7A81ED3CA9E00952D90 /* LineWriter.swift */; };
 		0020E5FC1EC240E40033C019 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0020E5FB1EC240E40033C019 /* Rule.swift */; };
 		0023999E1EBA52D300F1760F /* Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0023999D1EBA52D300F1760F /* Colour.swift */; };
 		0026C7B01ED234960056DCE9 /* Parcer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026C7AF1ED234960056DCE9 /* Parcer.swift */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		0003F4111ECA1F3D0062FF6E /* Stochastic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stochastic.swift; sourceTree = "<group>"; };
+		000EF7A81ED3CA9E00952D90 /* LineWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineWriter.swift; sourceTree = "<group>"; };
 		0020E5FB1EC240E40033C019 /* Rule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
 		0023999D1EBA52D300F1760F /* Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colour.swift; sourceTree = "<group>"; };
 		0026C7AF1ED234960056DCE9 /* Parcer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parcer.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				0003F4111ECA1F3D0062FF6E /* Stochastic.swift */,
 				0026C7AF1ED234960056DCE9 /* Parcer.swift */,
 				004871B71ED23BED00B7DCFF /* LineReader.swift */,
+				000EF7A81ED3CA9E00952D90 /* LineWriter.swift */,
 			);
 			name = Support;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 				0026C7B01ED234960056DCE9 /* Parcer.swift in Sources */,
 				81F1943D1EABB91100832CA6 /* LindenmayerSystem.swift in Sources */,
 				81EAC5A41D87DF52005DD91D /* Helper.swift in Sources */,
+				000EF7A91ED3CA9E00952D90 /* LineWriter.swift in Sources */,
 				0020E5FC1EC240E40033C019 /* Rule.swift in Sources */,
 				0003F4121ECA1F3D0062FF6E /* Stochastic.swift in Sources */,
 				0023999E1EBA52D300F1760F /* Colour.swift in Sources */,
