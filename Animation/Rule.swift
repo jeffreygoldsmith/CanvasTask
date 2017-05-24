@@ -28,7 +28,3 @@ extension LetterRule : Equatable
         return lhs.letter == rhs.letter
     }
 }
-
-// Separate the rules by letter
-// Create a percentage system that turns a number from 1-100 into an index
-// For this use a lookup of some sort?

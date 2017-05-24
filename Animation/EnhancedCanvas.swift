@@ -72,7 +72,7 @@ public class EnhancedCanvas : Canvas {
         
         if let characterAsInt = Int(String(character))
         {
-            let currentColour = system.color[characterAsInt]!
+            let currentColour = system.colours[characterAsInt]!
             self.lineColor = Color(hue: currentColour.hue, saturation: currentColour.saturation, brightness: currentColour.brightness, alpha: 100)
             return
         }

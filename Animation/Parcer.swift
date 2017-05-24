@@ -144,14 +144,20 @@ public class Parcer
             }
         }
         
+        if (thickness == 0)
+        {
+            thickness = 1
+            thicknessReduction = 1
+        }
+        
         let newSystem = LindenmayerSystem(angle: angle, axiom: axiom, rules: rules, generations: generations)
-        let newVisualizedSystem = VisualizedLindenmayerSystem(with: newSystem, length: length, reduction: reduction, x: x, y: y, thickness: thickness, thicknessReduction: thicknessReduction, direction: direction, color: colors)
+        let newVisualizedSystem = VisualizedLindenmayerSystem(with: newSystem, length: length, reduction: reduction, x: x, y: y, thickness: thickness, thicknessReduction: thicknessReduction, direction: direction, colours: colors)
         
         return newVisualizedSystem
     }
     
     
-    func writeSystem(path: String, systems: [VisualizedLindenmayerSystem])
+    func writeSystems(path: String, systems: [VisualizedLindenmayerSystem])
     {
         // Open an output file for writing, overwriting any existing data
         guard let writer = LineWriter(path: path, appending: false) else {
@@ -165,18 +171,19 @@ public class Parcer
             writer.write(line: "<")
             writer.write(line: "author:\(system.author)")
             writer.write(line: "description:\(system.description)")
-            writer.write(line: "angle:\(system.angle)")
+            writer.write(line: "angle:\(Int(system.angle))")
             writer.write(line: "axiom:\(system.axiom)")
             
             writer.write(line: "rules:")
             writer.write(line: "{")
             for (character, rule) in system.rules
             {
-                writer.write(line: "\(character)=\(rule)")
+                let individualRule = String(describing: rule).components(separatedBy: "\"")[1]
+                writer.write(line: "\(character)=\(individualRule)")
             }
             writer.write(line: "}")
             
-            writer.write(line: "generations:\(system.n)")
+            writer.write(line: "generations:\(Int(system.n))")
             writer.write(line: ">")
             
             
@@ -186,7 +193,7 @@ public class Parcer
                 writer.write(line: "{")
                 for (number, colour) in system.colours
                 {
-                    writer.write(line: "\(number)=\(colour.hue),\(colour.saturation),\(colour.brightness)")
+                    writer.write(line: "\(number)=\(Int(colour.hue)),\(Int(colour.saturation)),\(Int(colour.brightness))")
                 }
                 writer.write(line: "}")
             }
@@ -196,23 +203,23 @@ public class Parcer
                 writer.write(line: "direction:\(system.direction)")
             }
             
-            writer.write(line: "length:\(system.initialLength)")
-            writer.write(line: "length_reduction:\(system.reduction)")
+            writer.write(line: "length:\(Int(system.initialLength))")
+            writer.write(line: "length_reduction:\(Int(system.reduction))")
             
             if (system.initialThickness != nil)
             {
-                writer.write(line: "thickness:\(system.initialThickness)")
-                writer.write(line: "thickness_reduction:\(system.thicknessReduction)")
+                writer.write(line: "thickness:\(Int(system.initialThickness))")
+                writer.write(line: "thickness_reduction:\(Int(system.thicknessReduction))")
             }
             
             if (system.x != nil)
             {
-                writer.write(line: "x:\(system.x)")
+                writer.write(line: "x:\(Int(system.x))")
             }
             
             if (system.y != nil)
             {
-                writer.write(line: "y:\(system.y)")
+                writer.write(line: "y:\(Int(system.y))")
             }
             
             writer.write(line: "]")

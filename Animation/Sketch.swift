@@ -12,8 +12,8 @@ class Sketch : NSObject
 {
     let canvas : EnhancedCanvas
     let parcer = Parcer(path: "/Users/student/Desktop/test.txt")
-    let foo : LindenmayerSystem
-    let vFoo : VisualizedLindenmayerSystem
+    let original : LindenmayerSystem
+    let visualizedOriginal : VisualizedLindenmayerSystem
     let tumbleweed : LindenmayerSystem
     let visualizedTumbleweed : VisualizedLindenmayerSystem
 //    let systems : [VisualizedLindenmayerSystem]
@@ -32,13 +32,22 @@ class Sketch : NSObject
         visualizedTumbleweed = VisualizedLindenmayerSystem(with: tumbleweed, length: 25, reduction: 1.5, x: 250, y: 200, thickness: 1, thicknessReduction: 1, direction: 90, colours: tumbleweedColours)
         
         let fooRules = [Character("X") : ["1XX"], Character("F") : ["F+[2FFFF]"]]
-        foo = LindenmayerSystem(angle: 22, axiom: "FX", rules: fooRules, generations: 6)
-        vFoo = VisualizedLindenmayerSystem(with: foo, length: 50, reduction: 1.5, x: 250, y: 200, thickness: 1, thicknessReduction: 1, direction: 180, colours: [1 : Colour(hue: 120, saturation: 60, brightness: 46), 2 : Colour(hue: 50, saturation: 9, brightness: 76)])
+        original = LindenmayerSystem(angle: 22, axiom: "FX", rules: fooRules, generations: 6)
+        visualizedOriginal = VisualizedLindenmayerSystem(with: original, length: 50, reduction: 1.5, x: 250, y: 200, thickness: 1, thicknessReduction: 1, direction: 180, colours: [1 : Colour(hue: 120, saturation: 60, brightness: 46), 2 : Colour(hue: 50, saturation: 9, brightness: 76)])
+        
+        
+        visualizedTumbleweed.author = "Jeffrey Goldsmith"
+        visualizedTumbleweed.description = "A circular tumbleweed like L-System"
+        
+        visualizedOriginal.author = "Jeffrey Goldsmith"
+        visualizedOriginal.description = "A blue flower like L-System"
+        
+        parcer.writeSystems(path: "/Users/student/Desktop/test.txt", systems: [visualizedTumbleweed, visualizedOriginal])
         
         // The frame rate can be adjusted; the default is 60 fps
         canvas.framesPerSecond = 350
         
-        canvas.render(system: vFoo, generation: 6)
+//        canvas.render(system: vFoo, generation: 6)
     }
     
     // Runs repeatedly, equivalent to draw() in Processing
