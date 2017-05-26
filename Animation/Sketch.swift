@@ -31,8 +31,8 @@ class Sketch : NSObject
         tumbleweed = LindenmayerSystem(angle: 22, axiom: "FX", rules: tumbleweedRules, generations: 4)
         visualizedTumbleweed = VisualizedLindenmayerSystem(with: tumbleweed, length: 25, reduction: 1.5, x: 250, y: 200, thickness: 1, thicknessReduction: 1, direction: 90, colours: tumbleweedColours)
         
-        let fooRules = [Character("X") : ["1XX"], Character("F") : ["F+[2FFFF]"]]
-        original = LindenmayerSystem(angle: 22, axiom: "FX", rules: fooRules, generations: 6)
+        let fooRules = [Character("X") : ["1/1XX", "1/1-XX", "1/1+XX"], Character("F") : ["F++[2FFFF]"]]
+        original = LindenmayerSystem(angle: 10, axiom: "FX", rules: fooRules, generations: 6)
         visualizedOriginal = VisualizedLindenmayerSystem(with: original, length: 50, reduction: 1.5, x: 250, y: 200, thickness: 1, thicknessReduction: 1, direction: 180, colours: [1 : Colour(hue: 120, saturation: 60, brightness: 46), 2 : Colour(hue: 50, saturation: 9, brightness: 76)])
         
         
@@ -47,7 +47,7 @@ class Sketch : NSObject
         // The frame rate can be adjusted; the default is 60 fps
         canvas.framesPerSecond = 350
         
-//        canvas.render(system: vFoo, generation: 6)
+//        canvas.render(system: visualizedOriginal, generation: 6)
     }
     
     // Runs repeatedly, equivalent to draw() in Processing

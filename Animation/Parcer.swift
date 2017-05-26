@@ -176,10 +176,14 @@ public class Parcer
             
             writer.write(line: "rules:")
             writer.write(line: "{")
-            for (character, rule) in system.rules
+            for (character, rules) in system.rules
             {
-                let individualRule = String(describing: rule).components(separatedBy: "\"")[1]
-                writer.write(line: "\(character)=\(individualRule)")
+                print(character, rules)
+                for rule in rules
+                {
+                    let individualRule = String(describing: rule).components(separatedBy: "\"")[0]
+                    writer.write(line: "\(character)=\(individualRule)")
+                }
             }
             writer.write(line: "}")
             

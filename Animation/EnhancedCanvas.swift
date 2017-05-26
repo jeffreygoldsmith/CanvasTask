@@ -21,7 +21,7 @@ public class EnhancedCanvas : Canvas {
         
         // Render the word
         self.saveState()
-        self.translate(byX: system.x, byY: system.y) // Move turtle to starting point
+//        self.translate(byX: system.x, byY: system.y) // Move turtle to starting point
         for c in system.word[generation].characters {
             interpret(character: c, forThis: system)
         }
