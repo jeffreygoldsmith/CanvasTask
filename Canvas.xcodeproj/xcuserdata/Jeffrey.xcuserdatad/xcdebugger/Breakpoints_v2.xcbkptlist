@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Animation/Parcer.swift"
-            timestampString = "517324761.173597"
+            timestampString = "517707029.732305"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
             landmarkName = "writeSystems(path:systems:)"
             landmarkType = "7">
          </BreakpointContent>

@@ -66,6 +66,8 @@ public class EnhancedCanvas : Canvas {
     
     func interpret(character : Character, forThis system : VisualizedLindenmayerSystem)
     {
+        self.lineColor = Color(hue: system.currentColour.hue, saturation: system.currentColour.saturation, brightness: system.currentColour.brightness, alpha: 100)
+        self.defaultLineWidth = Int(system.currentThickness)
         
         let newX = Float(CGFloat(system.x) + cos(CGFloat(M_PI) * system.currentAngle/180) * CGFloat(system.currentLength))
         let newY = Float(CGFloat(system.y) + sin(CGFloat(M_PI) * system.currentAngle/180) * CGFloat(system.currentLength))
@@ -73,18 +75,12 @@ public class EnhancedCanvas : Canvas {
         if let characterAsInt = Int(String(character))
         {
             let currentColour = system.colours[characterAsInt]!
+            system.currentColour = currentColour
             self.lineColor = Color(hue: currentColour.hue, saturation: currentColour.saturation, brightness: currentColour.brightness, alpha: 100)
             return
         }
         
-        let uppercase = try! NSRegularExpression(pattern:"[A-Z]", options: NSRegularExpression.Options(rawValue: 0))
-        let lowercase = try! NSRegularExpression(pattern:"[a-z]", options: NSRegularExpression.Options(rawValue: 0))
-        let string = String(character)
-        let nsstring = string as NSString?
-        let isUppercase = uppercase.firstMatch(in: string, options: [], range: NSRange(location: 0, length: string.characters.count))
-        let isLowercase = lowercase.firstMatch(in: string, options: [], range: NSRange(location: 0, length: string.characters.count))
         
-        print(character)
         // Interpret each character of the word
         switch character {
         case "+":
@@ -100,13 +96,12 @@ public class EnhancedCanvas : Canvas {
             system.y = system.stateStack[system.stateStack.count - 1].yPos
             system.currentAngle = system.stateStack[system.stateStack.count - 1].angle
             system.stateStack.removeLast()
-        case Character(isUppercase.map { nsstring?.substring(with: $0.range)}!!):
+        case Character(String(character).uppercased()):
             // Go forward while drawing a line
             self.drawLine(fromX: system.x, fromY: system.y, toX: newX, toY: newY, lineWidth: Int(system.currentThickness))
             system.x = newX
             system.y = newY
-        case Character(isLowercase.map { nsstring?.substring(with: $0.range)}!!):
-            print(isLowercase!)
+        case Character(String(character).lowercased()):
             // Go forward without drawing a line
             system.x = newX
             system.y = newY

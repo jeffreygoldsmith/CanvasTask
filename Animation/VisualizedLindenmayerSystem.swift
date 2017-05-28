@@ -26,6 +26,7 @@ public class VisualizedLindenmayerSystem : LindenmayerSystem {
     var direction : Int                     // initial direction turtle faces (degrees)
     var currentLength : Float               // current line segment length
     var currentThickness : Float
+    var currentColour : Colour
     var thicknessReduction : Float
     var animationPosition = 0               // tracks current character being interpreted when system is animated
     var currentAngle : Degrees
@@ -52,6 +53,7 @@ public class VisualizedLindenmayerSystem : LindenmayerSystem {
         self.currentThickness = self.initialThickness
         self.thicknessReduction = thicknessReduction
         self.currentLength = self.initialLength
+        self.currentColour = Colour(hue: 0, saturation: 0, brightness: 0)
         self.currentAngle = Degrees(direction)
         self.colours = colours
         

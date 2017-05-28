@@ -10,15 +10,8 @@ import Foundation
 
 
 public class Parcer
-{
-    let path : String
-    
-    init(path: String)
-    {
-        self.path = path
-    }
-    
-    func parce() -> [VisualizedLindenmayerSystem]
+{    
+    func parce(path: String) -> [VisualizedLindenmayerSystem]
     {
         // Open a file for reading and parse each line using the space character as a delimiter
         guard let reader = LineReader(path: path) else {
@@ -33,7 +26,8 @@ public class Parcer
         // Process each line of the input file
         for (_, line) in reader.enumerated()
         {
-            let splitLine = line.components(separatedBy: " ")
+            var splitLine = line.components(separatedBy: " ")
+            splitLine = line.components(separatedBy: "\n")
             // Check to see if we have reached the end of a system
             if (splitLine[0] == "]")
             {
@@ -68,9 +62,10 @@ public class Parcer
             trimmedValue = trimmedValue[0].components(separatedBy: " ")
             let parcedValue = trimmedValue[0].components(separatedBy: ":")
             
+            print(parcedValue)
             switch parcedValue[0] {
             case "angle":
-                angle = Degrees(Int(parcedValue[1])!) // Set angle value
+                angle = Degrees(Int(Float(parcedValue[1])!)) // Set angle value
                 break
             case "axiom":
                 axiom = parcedValue[1] // Set axiom value

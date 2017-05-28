@@ -13,6 +13,9 @@
 		0023999E1EBA52D300F1760F /* Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0023999D1EBA52D300F1760F /* Colour.swift */; };
 		0026C7B01ED234960056DCE9 /* Parcer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026C7AF1ED234960056DCE9 /* Parcer.swift */; };
 		004871B81ED23BED00B7DCFF /* LineReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004871B71ED23BED00B7DCFF /* LineReader.swift */; };
+		00521BCA1EDB95E4009B0240 /* deterministic.txt in Resources */ = {isa = PBXBuildFile; fileRef = 00521BC81EDB95E4009B0240 /* deterministic.txt */; };
+		00521BCB1EDB95E4009B0240 /* stochastic.txt in Resources */ = {isa = PBXBuildFile; fileRef = 00521BC91EDB95E4009B0240 /* stochastic.txt */; };
+		00629B811EDB766600DC2A86 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00629B801EDB766600DC2A86 /* Gradient.swift */; };
 		81064A0A1C130A10007ED524 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81064A091C130A10007ED524 /* AppDelegate.swift */; };
 		81064A0C1C130A10007ED524 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81064A0B1C130A10007ED524 /* ViewController.swift */; };
 		81064A0E1C130A10007ED524 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81064A0D1C130A10007ED524 /* Assets.xcassets */; };
@@ -31,6 +34,9 @@
 		0023999D1EBA52D300F1760F /* Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colour.swift; sourceTree = "<group>"; };
 		0026C7AF1ED234960056DCE9 /* Parcer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parcer.swift; sourceTree = "<group>"; };
 		004871B71ED23BED00B7DCFF /* LineReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineReader.swift; sourceTree = "<group>"; };
+		00521BC81EDB95E4009B0240 /* deterministic.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = deterministic.txt; sourceTree = "<group>"; };
+		00521BC91EDB95E4009B0240 /* stochastic.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stochastic.txt; sourceTree = "<group>"; };
+		00629B801EDB766600DC2A86 /* Gradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		81064A061C130A10007ED524 /* Canvas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Canvas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81064A091C130A10007ED524 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81064A0B1C130A10007ED524 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +92,8 @@
 		81064A1A1C132D69007ED524 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				00521BC81EDB95E4009B0240 /* deterministic.txt */,
+				00521BC91EDB95E4009B0240 /* stochastic.txt */,
 				81F1943A1EABB91100832CA6 /* EnhancedCanvas.swift */,
 				81F1943B1EABB91100832CA6 /* LindenmayerSystem.swift */,
 				81678C531EBA34D3006FB3B9 /* VisualizedLindenmayerSystem.swift */,
@@ -101,6 +109,7 @@
 				0026C7AF1ED234960056DCE9 /* Parcer.swift */,
 				004871B71ED23BED00B7DCFF /* LineReader.swift */,
 				000EF7A81ED3CA9E00952D90 /* LineWriter.swift */,
+				00629B801EDB766600DC2A86 /* Gradient.swift */,
 			);
 			name = Support;
 			sourceTree = "<group>";
@@ -165,7 +174,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				81064A0E1C130A10007ED524 /* Assets.xcassets in Resources */,
+				00521BCB1EDB95E4009B0240 /* stochastic.txt in Resources */,
 				81064A111C130A10007ED524 /* Main.storyboard in Resources */,
+				00521BCA1EDB95E4009B0240 /* deterministic.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,6 +190,7 @@
 				81064A0C1C130A10007ED524 /* ViewController.swift in Sources */,
 				0026C7B01ED234960056DCE9 /* Parcer.swift in Sources */,
 				81F1943D1EABB91100832CA6 /* LindenmayerSystem.swift in Sources */,
+				00629B811EDB766600DC2A86 /* Gradient.swift in Sources */,
 				81EAC5A41D87DF52005DD91D /* Helper.swift in Sources */,
 				000EF7A91ED3CA9E00952D90 /* LineWriter.swift in Sources */,
 				0020E5FC1EC240E40033C019 /* Rule.swift in Sources */,
