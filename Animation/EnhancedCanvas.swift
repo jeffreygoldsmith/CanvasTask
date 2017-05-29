@@ -21,7 +21,6 @@ public class EnhancedCanvas : Canvas {
         
         // Render the word
         self.saveState()
-//        self.translate(byX: system.x, byY: system.y) // Move turtle to starting point
         for c in system.word[generation].characters {
             interpret(character: c, forThis: system)
         }
@@ -66,6 +65,7 @@ public class EnhancedCanvas : Canvas {
     
     func interpret(character : Character, forThis system : VisualizedLindenmayerSystem)
     {
+        // Set the line colour and system thickness to the current values of the system
         self.lineColor = Color(hue: system.currentColour.hue, saturation: system.currentColour.saturation, brightness: system.currentColour.brightness, alpha: 100)
         self.defaultLineWidth = Int(system.currentThickness)
         

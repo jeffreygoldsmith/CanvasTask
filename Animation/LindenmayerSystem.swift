@@ -50,17 +50,22 @@ public class LindenmayerSystem {
                 var newWord = ""
                 
                 // Inspect each character of existing word
-                for character in word[i - 1].characters {
-                    
+                for character in word[i - 1].characters
+                {
+                    // If the character is something we have to replace...
                     if (character != "+" && character != "-" && Int(String(character)) == nil && character != "[" && character != "]")
                     {
+                        // Get the successors
                         if let successors = rules[character]
                         {
+                            // If this letter is stochastic...
                             if successors.count > 1
                             {
+                                // Replace it with the randomized rule!
                                 let ruleToAppend = randomSuccessor(successors: successors)
                                 newWord.append(ruleToAppend)
                             } else {
+                                // Replace it with the rule!
                                 newWord.append(successors[0])
                             }
                         }

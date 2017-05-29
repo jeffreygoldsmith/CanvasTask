@@ -16,22 +16,22 @@ public class VisualizedLindenmayerSystem : LindenmayerSystem {
         var angle : Degrees
     }
     
-    var author : String = ""
-    var description : String = ""
-    var initialLength : Float               // initial line segment length
-    var initialThickness : Float            // initial line segment width
-    var reduction : Float                   // reduction factor
-    var x : Float                           // initial horizontal position of turtle
-    var y : Float                           // initial vertical position of turtle
-    var direction : Int                     // initial direction turtle faces (degrees)
-    var currentLength : Float               // current line segment length
-    var currentThickness : Float
-    var currentColour : Colour
-    var thicknessReduction : Float
-    var animationPosition = 0               // tracks current character being interpreted when system is animated
-    var currentAngle : Degrees
-    var stateStack = [systemState]()
-    var colours : [Int : Colour]
+    var author : String = ""                // Author of system
+    var description : String = ""           // Short description of system
+    var initialLength : Float               // Initial line segment length
+    var initialThickness : Float            // Initial line segment width
+    var reduction : Float                   // Reduction factor
+    var x : Float                           // Initial horizontal position of turtle
+    var y : Float                           // Initial vertical position of turtle
+    var direction : Int                     // Initial direction turtle faces (degrees)
+    var currentLength : Float               // Current line segment length
+    var currentThickness : Float            // Current line thickness
+    var currentColour : Colour              // Current line colour
+    var thicknessReduction : Float          // System thickness reduction factor
+    var animationPosition = 0               // Current character being drawn
+    var currentAngle : Degrees              // Current angle of system
+    var stateStack = [systemState]()        // Stack of systemStates to keep track of systems
+    var colours : [Int : Colour]            // Colours for the system
 
     public init(with providedSystem: LindenmayerSystem,
                 length: Float,

@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Struct for system colours
 public struct Colour
 {
     let hue : Float

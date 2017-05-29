@@ -28,17 +28,18 @@ public class Parcer
         {
             var splitLine = line.components(separatedBy: " ")
             splitLine = line.components(separatedBy: "\n")
+            
             // Check to see if we have reached the end of a system
             if (splitLine[0] == "]")
             {
-                systems.append(parceSystem(data: components))
-                components = []
+                systems.append(parceSystem(data: components)) // Append the parced system to an array of parced systems
+                components = [] // Reset the components
             }
             // Build an array of each component from the file
             components.append(line)
         }
         
-        return systems
+        return systems // Return a built array of all parced systems
     }
     
     func parceSystem(data: [String]) -> VisualizedLindenmayerSystem
@@ -58,11 +59,12 @@ public class Parcer
         
         for (index, value) in data.enumerated()
         {
+            // Trim the unneeded characters off the string
             var trimmedValue = value.components(separatedBy: "\n")
             trimmedValue = trimmedValue[0].components(separatedBy: " ")
             let parcedValue = trimmedValue[0].components(separatedBy: ":")
             
-            print(parcedValue)
+            // Switch over the parced value to add possible values to create a system
             switch parcedValue[0] {
             case "angle":
                 angle = Degrees(Int(Float(parcedValue[1])!)) // Set angle value
@@ -139,16 +141,17 @@ public class Parcer
             }
         }
         
+        // Set default thickness and thickness reduction values
         if (thickness == 0)
         {
             thickness = 1
             thicknessReduction = 1
         }
         
-        let newSystem = LindenmayerSystem(angle: angle, axiom: axiom, rules: rules, generations: generations)
-        let newVisualizedSystem = VisualizedLindenmayerSystem(with: newSystem, length: length, reduction: reduction, x: x, y: y, thickness: thickness, thicknessReduction: thicknessReduction, direction: direction, colours: colors)
+        let newSystem = LindenmayerSystem(angle: angle, axiom: axiom, rules: rules, generations: generations) // Create new system
+        let newVisualizedSystem = VisualizedLindenmayerSystem(with: newSystem, length: length, reduction: reduction, x: x, y: y, thickness: thickness, thicknessReduction: thicknessReduction, direction: direction, colours: colors) // Create new visualized system
         
-        return newVisualizedSystem
+        return newVisualizedSystem // Return the newly created visualized system
     }
     
     
@@ -160,8 +163,14 @@ public class Parcer
             exit(0); // cannot open output file
         }
         
+        // Iterate over all systems
         for system in systems
         {
+            //
+            // Write out each system to the file in a format
+            // which matches the format given to us.
+            //
+            
             writer.write(line: "[")
             writer.write(line: "<")
             writer.write(line: "author:\(system.author)")
@@ -171,9 +180,10 @@ public class Parcer
             
             writer.write(line: "rules:")
             writer.write(line: "{")
+            
+            // Write all rules
             for (character, rules) in system.rules
             {
-                print(character, rules)
                 for rule in rules
                 {
                     let individualRule = String(describing: rule).components(separatedBy: "\"")[0]
@@ -190,6 +200,8 @@ public class Parcer
             {
                 writer.write(line: "colors:")
                 writer.write(line: "{")
+                
+                // Write all colours
                 for (number, colour) in system.colours
                 {
                     writer.write(line: "\(number)=\(Int(colour.hue)),\(Int(colour.saturation)),\(Int(colour.brightness))")
@@ -197,29 +209,14 @@ public class Parcer
                 writer.write(line: "}")
             }
             
-            if (system.direction != nil)
-            {
-                writer.write(line: "direction:\(system.direction)")
-            }
             
+            writer.write(line: "direction:\(system.direction)")
             writer.write(line: "length:\(Int(system.initialLength))")
             writer.write(line: "length_reduction:\(Int(system.reduction))")
-            
-            if (system.initialThickness != nil)
-            {
-                writer.write(line: "thickness:\(Int(system.initialThickness))")
-                writer.write(line: "thickness_reduction:\(Int(system.thicknessReduction))")
-            }
-            
-            if (system.x != nil)
-            {
-                writer.write(line: "x:\(Int(system.x))")
-            }
-            
-            if (system.y != nil)
-            {
-                writer.write(line: "y:\(Int(system.y))")
-            }
+            writer.write(line: "thickness:\(Int(system.initialThickness))")
+            writer.write(line: "thickness_reduction:\(Int(system.thicknessReduction))")
+            writer.write(line: "x:\(Int(system.x))")
+            writer.write(line: "y:\(Int(system.y))")
             
             writer.write(line: "]")
         }
